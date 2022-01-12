@@ -1,0 +1,32 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:recipe_app/constants.dart';
+import 'package:recipe_app/screens/welcome_screen/welcome_screen.dart';
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        color: bgColor,
+        child: Image.asset("lib/assets/icons/logo.png"),
+      ),
+    );
+  }
+}
