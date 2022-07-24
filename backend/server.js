@@ -6,7 +6,12 @@ const app = require('./app.js');
 dotenv.config({ path: './config.env' });
 
 // Connect to DB
-mongoose.connect(process.env.DATABASE).then(() => {
+let DB_CONNECTION_STRING = process.env.DATABASE;
+DB_CONNECTION_STRING = DB_CONNECTION_STRING.replace(
+  '$DB_PASSWORD$',
+  process.env.DB_PASSWORD
+);
+mongoose.connect(DB_CONNECTION_STRING).then(() => {
   console.log('DB connection successful.');
 });
 
